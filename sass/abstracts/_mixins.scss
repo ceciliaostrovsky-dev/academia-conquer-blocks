@@ -1,0 +1,56 @@
+@use "variables" as *;
+
+// Mixin para breakpoints
+
+//Rotación
+@mixin breakpoint($size) {
+  @if $size == rotate {
+    @media (max-height: 550px) {
+      @content;
+    }
+  } @else if $size == tablet {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $size == desktop {
+    @media (min-width: 1110px) {
+      @content;
+    }
+  } @else if $size == desktop-xl {
+    @media (min-width: 1441px) {
+      @content;
+    }
+  } @else if $size == tablet-and-rotate {
+    @media (max-height: 550px), (min-width: 768px) {
+      @content;
+    }
+  }
+}
+
+// Mixin para decoración de fondo puntitos
+@mixin dotted-pattern($opacity: 0.2) {
+  background-image: radial-gradient(
+    rgba(var(--color-brand-orange-rgb), $opacity) 1px,
+    transparent 1.5px
+  );
+  background-size: 24px 24px;
+}
+
+// Mixin para decoración de cuadrícula diagonal
+@mixin tech-grid-pattern($opacity: 0.05, $size: 32px) {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(var(--color-brand-primary-rgb), $opacity) 0,
+      rgba(var(--color-brand-secondary-rgb), $opacity) 1px,
+      transparent 1px,
+      transparent $size
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(var(--color-brand-primary-rgb), $opacity) 0,
+      rgba(var(--color-brand-secondary-rgb), $opacity) 1px,
+      transparent 1px,
+      transparent $size
+    );
+}

@@ -1,0 +1,297 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.hero__about {
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  min-height: 50vh;
+  margin-left: calc(50% - 50vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem 1rem;
+
+  @include breakpoint(tablet) {
+    @include dotted-pattern;
+    padding: 2rem 4rem;
+  }
+
+  @include breakpoint(desktop-xl) {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  &-card {
+    width: 100%;
+
+    @include breakpoint(tablet) {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    @include breakpoint(desktop) {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      align-items: center;
+      gap: 4rem;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    @include breakpoint(desktop-xl) {
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+  }
+
+  &-figure {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 1;
+
+    //Filtro oscuro + desenfoque
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+
+    @include breakpoint(tablet) {
+      position: relative;
+      height: auto;
+      order: 2;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% center;
+
+    @include breakpoint(tablet) {
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--color-bg-white);
+    padding: 0 1rem;
+
+    @include breakpoint(tablet) {
+      order: 1;
+      color: var(--color-text-main);
+      padding: 0;
+      text-align: left;
+    }
+  }
+
+  &-title {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
+
+    @include breakpoint(tablet) {
+      text-shadow: none;
+    }
+
+    @include breakpoint(desktop-xl) {
+      font-size: 4rem;
+      line-height: 1.2;
+    }
+  }
+
+  &-description {
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    line-height: 1.6;
+    padding-bottom: 1.5rem;
+
+    @include breakpoint(desktop) {
+      max-width: 520px;
+    }
+
+    @include breakpoint(desktop-xl) {
+      font-size: var(--font-size-md);
+      max-width: 550px;
+    }
+  }
+
+  //Rotación de móvil
+  @include breakpoint(rotate) {
+    &-figure {
+      //Filtro oscuro + desenfoque más sutil
+      &::after {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(1px);
+      }
+    }
+    &-description {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+  }
+}
+
+//Equipo Directivo y Docente
+
+.about__team {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem 1.5rem;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
+  background-color: var(--color-bg-dark);
+
+  @include breakpoint(tablet) {
+    padding: 3rem;
+  }
+
+  @include breakpoint(desktop) {
+    padding: 4rem;
+    gap: 3rem;
+  }
+
+  @include breakpoint(desktop-xl) {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    padding-left: max(3rem, calc(50vw - 800px));
+    padding-right: max(3rem, calc(50vw - 800px));
+  }
+
+  &-title {
+    font-weight: 800;
+    text-align: center;
+
+    //Gradiente en el texto
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    @include breakpoint(desktop) {
+      font-size: var(--font-size-xl);
+      margin-bottom: 1.5rem;
+    }
+
+    @include breakpoint(desktop-xl) {
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  //Sección de los equipos
+  &-group {
+    margin-bottom: 2rem;
+  }
+
+  &-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-bg-main);
+    margin-bottom: 0.5rem;
+  }
+
+  &-description {
+    font-size: var(--font-size-base);
+    color: var(--color-bg-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 1000px;
+  }
+
+  &-list {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @include breakpoint(tablet) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    @include breakpoint(desktop) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .about__card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    &-title {
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      order: 2; // Pone el título DEBAJO de la foto
+    }
+
+    &-figure {
+      margin: 0 0 1rem 0;
+      order: 1; // Pone la foto primero
+    }
+
+    &-img {
+      border-radius: 50%; // Foto redonda estilo perfil
+      object-fit: cover;
+      border: 3px solid var(--color-primary, #ffffff);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    &-bio {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+      order: 3;
+      flex-grow: 1;
+    }
+  }
+}

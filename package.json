@@ -1,0 +1,15 @@
+{
+  "name": "prueba-sass",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.100.0",
+    "vite": "latest"
+  }
+}

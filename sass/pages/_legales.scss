@@ -1,0 +1,118 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.legal-page {
+  background-color: var(--color-bg-dark, #0b0f19);
+  color: var(--color-text-light, #f8fafc);
+  padding: 4rem 1.5rem;
+  min-height: 100vh;
+
+  @include dotted-pattern;
+}
+
+.legal {
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+    background: var(
+      --gradient-brand,
+      linear-gradient(135deg, #ff6b00 0%, #ff8800 100%)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  &__date {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+
+    time {
+      color: var(--color-text-muted, #e2e8f0);
+      font-weight: 600;
+    }
+  }
+
+  // Contenedor vertical de tarjetas legales
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  // Tarjeta tipo card
+  &__card {
+    background-color: var(--color-bg-card, #161e2e);
+    border: 1px solid rgba(255, 107, 0, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    scroll-margin-top: 2rem;
+  }
+
+  &__subtitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primary, #ff6b00);
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    font-size: 0.95rem;
+    color: var(--color-text-body, #cbd5e1);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: #ffffff;
+    }
+  }
+
+  &__list {
+    margin-left: 1.25rem;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__list-item {
+    font-size: 0.95rem;
+    color: var(--color-text-body, #cbd5e1);
+    line-height: 1.5;
+
+    strong {
+      color: var(--color-bg-white);
+    }
+  }
+
+  &__link {
+    color: var(--color-primary, #ff6b00);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #ff8800;
+      text-decoration: underline;
+    }
+  }
+
+  &__fiscal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

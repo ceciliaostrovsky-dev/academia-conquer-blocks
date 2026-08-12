@@ -1,0 +1,323 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.course-detail {
+  background-color: var(--color-bg-main);
+  width: 100%;
+
+  .course__hero {
+    position: relative;
+    background-color: var(--color-bg-dark);
+
+    // IMAGEN DE FONDO Y DEGRADADO
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(11, 17, 33, 0.98) 35%,
+        rgba(11, 17, 33, 0.5) 100%
+      ),
+      var(--bg-curso);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right center;
+    padding: 4rem 3rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+
+    @include breakpoint(desktop) {
+      padding: 8rem 0;
+      min-height: 70vh;
+    }
+
+    // El patrón de puntitos de la academia por encima
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      @include dotted-pattern(0.12);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    &-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+
+      @include breakpoint(desktop-xl) {
+        max-width: 1600px;
+        padding-left: 10rem;
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 600px;
+
+      @include breakpoint(desktop) {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      @include breakpoint(desktop-xl) {
+        max-width: 800px;
+      }
+    }
+
+    &-title {
+      font-size: var(--font-size-xl);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    &-description {
+      color: var(--color-bg-white);
+      font-size: var(--font-size-base);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  // ==========================================
+  // 2. BENEFICIOS
+  // ==========================================
+  .course__benefits {
+    background: var(--gradient-brand);
+    padding: 4rem 3rem;
+    width: 100%;
+    box-sizing: border-box;
+    @include breakpoint(desktop-xl) {
+      padding: 6rem 8rem;
+    }
+
+    &-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 2rem;
+
+      @include breakpoint(desktop-xl) {
+        max-width: 1600px;
+        padding: 4rem 6rem;
+      }
+    }
+
+    &-title {
+      font-size: var(--font-size-lg);
+      color: var(--color-bg-muted);
+      text-align: center;
+      font-weight: 800;
+      margin-bottom: 4rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    &-grid {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+
+      @include breakpoint(tablet-and-rotate) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include breakpoint(desktop-xl) {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1600px;
+      }
+    }
+
+    &-card {
+      background-color: var(--color-bg-white);
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(11, 17, 33, 0.06);
+      border-top: 5px solid var(--color-bg-dark);
+      box-shadow: 0 15px 35px rgba(11, 17, 33, 0.1);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 45px rgba(11, 17, 33, 0.2);
+      }
+    }
+
+    &-icon {
+      margin-bottom: 1.5rem;
+      object-fit: contain;
+    }
+
+    &-card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-text-main);
+      margin-bottom: 1rem;
+    }
+
+    &-card-text {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      text-align: justify;
+      hyphens: auto;
+    }
+  }
+
+  // ==========================================
+  // 3. METODOLOGÍA
+  // ==========================================
+  .course__methodology {
+    background-color: var(--color-bg-dark);
+    padding: 4rem 3rem;
+    width: 100%;
+    @include breakpoint(desktop-xl) {
+      padding: 6rem 8rem;
+    }
+
+    &-title {
+      font-size: var(--font-size-lg);
+      color: var(--color-bg-white);
+      text-align: center;
+      font-weight: 800;
+      margin-bottom: 5rem;
+    }
+
+    &-grid {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem 3rem;
+
+      @include breakpoint(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include breakpoint(desktop-xl) {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1600px;
+      }
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+      text-align: center;
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      border: 1px solid var(--color-brand-orange);
+      border-top: 5px solid var(--color-brand-orange);
+      box-shadow:
+        inset 0 10px 15px -10px var(--color-brand-orange),
+        0 10px 30px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 45px rgba(11, 17, 33, 0.2);
+      }
+
+      @include breakpoint(tablet) {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+
+    //Iconos de la metodología
+    &-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--color-brand-primary);
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+      svg {
+        width: 28px;
+        height: 28px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+      }
+    }
+
+    &-item-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--color-bg-white);
+      margin-bottom: 0.75rem;
+    }
+
+    &-item-text {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      text-align: justify;
+      hyphens: auto;
+    }
+  }
+
+  // ==========================================
+  // 4. CTA FINAL (Estilo Claro Integrado)
+  // ==========================================
+  .course__cta {
+    background-color: #f8fafc;
+    @include dotted-pattern(0.2);
+    padding: 3rem 2rem 4rem;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-title {
+      font-size: 1.8rem;
+      color: var(--color-bg-dark);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+      max-width: 650px;
+      text-align: center;
+    }
+
+    &-text {
+      color: var(--color-text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 450px;
+      margin: 0 auto 3rem;
+      text-wrap: pretty;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.container {
+  margin: 0 auto; // Para centrar la caja
+  padding: 0 1.5rem;
+  width: 100%;
+}

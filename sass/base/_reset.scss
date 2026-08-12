@@ -1,0 +1,62 @@
+@use "../abstracts/variables" as *;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// Para que las imágenes no se salgan de su contenedor
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+// Para que los inputs y botones hereden la fuente que elijas
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  overflow-x: hidden;
+  color: var(--color-text-main);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul,
+ol {
+  list-style: none; //Saca los puntitos a las listas
+}
+
+a {
+  text-decoration: none; //Saca subrayado a los enlaces
+  color: inherit; //Hereda el color del texto
+}
+
+img {
+  max-width: 100%; //Que las imágenes sean responsive
+  display: block;
+}
+
+h1 {
+  font-size: var(--font-size-xl);
+  line-height: 1.6;
+}
+
+h2 {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+}
+
+p {
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+}

@@ -1,0 +1,57 @@
+:root {
+  // Variables globales para el proyecto
+
+  //Colores
+  --color-text-main: #171717;
+  --color-text-main-rgb: 23, 23, 23;
+  --color-text-muted: #334155;
+  --color-bg-main-rgb: 241, 245, 249;
+  --color-bg-main: #f1f5f9;
+  --color-bg-secondary: #e2e8f0;
+  --color-bg-white: #ffffff;
+  --color-bg-dark: #0b1121;
+  --color-bg-mid-dark: #1e293b;
+  --color-bg-mid-dark-rgb: 30, 41, 59;
+  --color-bg-footer: #050810;
+  --color-brand-primary: #ffbf00;
+  --color-brand-secondary: #ff4000;
+  --color-brand-orange: #ea580c;
+  --color-brand-primary-rgb: 255, 191, 0;
+  --color-brand-secondary-rgb: 255, 64, 0;
+  --color-brand-orange-rgb: 234, 88, 12;
+  --gradient-brand: linear-gradient(
+    135deg,
+    var(--color-brand-primary),
+    var(--color-brand-secondary)
+  );
+
+  //Tipografía
+  --font-principal: "Funnel Display", sans-serif;
+
+  //Escala tipográfica
+  --font-size-sm: clamp(
+    0.75rem,
+    1.5vw,
+    1rem
+  ); // 12 a 14px - Para submenús, pie de página o textos secundarios
+
+  --font-size-base: clamp(1rem, 2vw, 1.2rem); // 16px a 18px - Para párrafos
+
+  --font-size-md: clamp(
+    1.25rem,
+    2.5vw,
+    1.375rem
+  ); // 18px a 20px - Para los enlaces del menú principal
+
+  --font-size-lg: clamp(
+    1.5rem,
+    4vw,
+    2rem
+  ); // 24px a 32px - Para los títulos de las secciones (H2)
+
+  --font-size-xl: clamp(
+    2rem,
+    6vw,
+    3rem
+  ); // 32px a 48px - Para el título de bienvenida (H1)
+}
