@@ -7,12 +7,12 @@
   padding: 4rem 1.5rem;
   min-height: 100vh;
   @include dotted-pattern;
-}
 
-.container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
+  .container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
 }
 
 .contact {
