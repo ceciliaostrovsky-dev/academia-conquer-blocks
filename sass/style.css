@@ -540,7 +540,7 @@ body {
     position: absolute;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 3rem;
     padding: 3rem;
   }
@@ -585,7 +585,7 @@ body {
     flex-direction: row;
     width: auto;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
   }
 }
 @media (min-width: 1110px) {
