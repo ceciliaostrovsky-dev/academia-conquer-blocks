@@ -2,8 +2,11 @@
 @use "../abstracts/mixins" as *;
 
 .register-page {
-  background-color: var(--color-bg-dark, #0b0f19);
-  color: var(--color-text-light, #f8fafc);
+  background-color: var(
+    --color-bg-light,
+    #f1f5f9
+  ); // 👈 Esta es la clave de la luz
+  color: var(--color-text-main, #1e293b);
   padding: 3rem 1.5rem;
   min-height: 100vh;
   display: flex;
