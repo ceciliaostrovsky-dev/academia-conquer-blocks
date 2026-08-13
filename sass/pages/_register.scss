@@ -57,12 +57,19 @@
     background-color: var(--color-bg-card, #161e2e);
     border: 1px solid rgba(255, 107, 0, 0.15);
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
     margin-bottom: 2.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+
+    @media (min-width: 576px) {
+      padding: 2rem; // Mayor padding
+    }
   }
 
   &__legend {
@@ -92,10 +99,12 @@
   &__input,
   &__textarea {
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     padding: 0.8rem 1rem;
     font-size: 1rem;
     font-family: inherit;
-    color: #ffffff;
+    color: var(--color-bg-white);
     background-color: rgba(11, 15, 25, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 6px;
@@ -126,10 +135,13 @@
   &__file-input {
     font-size: 0.9rem;
     color: var(--color-text-muted, #94a3b8);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 
     &::file-selector-button {
-      padding: 0.5rem 1rem;
-      margin-right: 1rem;
+      padding: 0.5rem 0.75rem;
+      margin-right: 0.5rem;
       border-radius: 6px;
       border: 1px solid rgba(255, 107, 0, 0.3);
       background-color: rgba(255, 107, 0, 0.1);
