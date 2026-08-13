@@ -1,7 +1,7 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-#main-main {
+.main-main {
   background-color: var(--color-bg-main);
   width: 100%;
 }
