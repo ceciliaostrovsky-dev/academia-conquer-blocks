@@ -522,10 +522,15 @@ body {
   z-index: 99;
   align-items: start;
   padding: 2rem;
+  box-sizing: border-box;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 @media (max-height: 550px) {
   .main__nav {
-    top: 80%;
+    top: 100%;
+    padding: 1.5rem;
   }
 }
 @media (min-width: 768px) {
@@ -551,6 +556,8 @@ body {
     justify-content: flex-end;
     align-items: center;
     gap: 1.5rem;
+    max-height: none;
+    overflow-y: visible;
   }
 }
 .main__nav .nav__links {
@@ -558,17 +565,16 @@ body {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  gap: 1.5rem;
+  gap: 1.25rem;
   margin: 0;
   padding: 0;
   font-size: var(--font-size-sm);
 }
 @media (max-height: 550px) {
   .main__nav .nav__links {
-    padding: 1rem;
-    gap: 2rem;
-    flex-direction: row;
-    justify-content: center;
+    padding: 0;
+    gap: 1.25rem;
+    flex-direction: column;
   }
 }
 @media (min-width: 768px) {
@@ -596,15 +602,18 @@ body {
   }
 }
 .main__nav .nav__separator {
-  gap: 1.5rem;
+  gap: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: 1rem;
 }
 @media (max-height: 550px) {
   .main__nav .nav__separator {
-    align-self: center;
+    align-self: flex-start;
+    margin-top: 1rem;
+    width: 100%;
   }
 }
 @media (min-width: 768px) {
@@ -619,6 +628,7 @@ body {
     flex-direction: row;
     gap: 1rem;
     width: auto;
+    margin-top: 0;
   }
 }
 @media (min-width: 1441px) {
@@ -944,7 +954,7 @@ body {
   position: absolute;
   z-index: 0;
   inset: 0;
-  background-image: url("/img/home/cubos.png");
+  background-image: url("../img/home/cubos.png");
   background-repeat: no-repeat;
   background-position: 90% 35%;
   aspect-ratio: 1324/1250;
@@ -1923,7 +1933,7 @@ body {
     max-width: 420px;
     margin: 0 auto;
     aspect-ratio: 1324/1250;
-    background-image: url("/img/home/cubos.png");
+    background-image: url("../img/home/cubos.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -2251,6 +2261,7 @@ body {
   font-weight: 500;
   line-height: 1.6;
   padding-bottom: 1.5rem;
+  text-align: justify;
 }
 @media (min-width: 1110px) {
   .hero__about-description {
@@ -2340,6 +2351,7 @@ body {
   color: var(--color-bg-secondary);
   margin-bottom: 2.5rem;
   max-width: 1000px;
+  text-align: justify;
 }
 .about__team-list {
   padding: 0;
@@ -2769,12 +2781,20 @@ body {
   background-color: var(--color-bg-card, #161e2e);
   border: 1px solid rgba(255, 107, 0, 0.15);
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
   margin-bottom: 2.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+@media (min-width: 576px) {
+  .register__fieldset {
+    padding: 2rem;
+  }
 }
 .register__legend {
   font-size: 1.15rem;
@@ -2798,10 +2818,12 @@ body {
 }
 .register__input, .register__textarea {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 0.8rem 1rem;
   font-size: 1rem;
   font-family: inherit;
-  color: #ffffff;
+  color: var(--color-bg-white);
   background-color: rgba(11, 15, 25, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
@@ -2828,10 +2850,13 @@ body {
 .register__file-input {
   font-size: 0.9rem;
   color: var(--color-text-muted, #94a3b8);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .register__file-input::file-selector-button {
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
+  padding: 0.5rem 0.75rem;
+  margin-right: 0.5rem;
   border-radius: 6px;
   border: 1px solid rgba(255, 107, 0, 0.3);
   background-color: rgba(255, 107, 0, 0.1);
