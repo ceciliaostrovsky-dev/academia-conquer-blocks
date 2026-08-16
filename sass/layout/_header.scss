@@ -4,7 +4,10 @@
 #main-header {
   background-color: var(--color-bg-secondary);
   width: 100%;
+  position: relative;
+  z-index: 100;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -59,6 +62,7 @@
     gap: 2rem;
   }
 }
+
 .menu__toggle {
   &-checkbox {
     display: none;
@@ -80,7 +84,7 @@
 }
 
 .main__nav {
-  display: none; //Para esconder el menú hasta tocar el botón
+  display: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -88,20 +92,17 @@
   background-color: var(--color-bg-secondary);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
   z-index: 99;
-  align-items: start;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   box-sizing: border-box;
 
-  //Para hacer scroll vertical si el contenido es más alto
   max-height: calc(100vh - 80px);
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 
-  //Posicionamiento para rotación
   @include breakpoint(rotate) {
     top: 100%;
-    padding: 1.5rem;
-    align-items: flex-start;
+    padding: 1.5rem 2rem;
   }
 
   @include breakpoint(tablet) {
@@ -110,23 +111,25 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 3rem;
-    padding: 3rem;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    box-sizing: border-box;
   }
 
   @include breakpoint(desktop) {
-    display: flex !important; // Para mostrar el menú en pantallas grandes
+    display: flex !important;
     position: static;
     flex: 1;
     width: auto;
+    max-width: none;
     box-shadow: none;
     padding: 0;
     background-color: transparent;
     justify-content: flex-end;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
     max-height: none;
-    overflow-y: visible;
+    overflow: visible !important;
   }
 
   .nav__links {
@@ -134,9 +137,10 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    gap: 1.25rem; // Espacio entre Másters, Recursos y el Login
+    gap: 1.25rem;
     margin: 0;
     padding: 0;
+    list-style: none;
     font-size: var(--font-size-sm);
 
     @include breakpoint(rotate) {
@@ -147,45 +151,52 @@
     }
 
     @include breakpoint(tablet) {
-      gap: 4rem;
+      gap: 2rem;
       flex-direction: row;
       width: auto;
-      justify-content: flex-start;
       align-items: flex-start;
     }
 
     @include breakpoint(desktop) {
       gap: 2.5rem;
-      padding: 0;
+      flex-direction: row;
       width: auto;
       align-items: center;
     }
 
     @include breakpoint(desktop-xl) {
       gap: 4rem;
-      margin-right: 5rem;
+      margin-right: 3rem;
       font-size: 1rem;
     }
   }
 
   .nav__separator {
-    gap: 1rem; // Espacio entre el Login y el Registro
+    gap: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     margin-top: 1rem;
+    flex-shrink: 0;
+    overflow: visible !important;
 
     @include breakpoint(rotate) {
-      align-self: flex-start;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
       margin-top: 1rem;
-      width: 100%;
+      width: auto;
     }
 
     @include breakpoint(tablet) {
       margin-top: 0;
-      width: 220px;
-      align-items: stretch;
+      width: auto;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: nowrap;
     }
 
     @include breakpoint(desktop) {
@@ -193,16 +204,31 @@
       gap: 1rem;
       width: auto;
       margin-top: 0;
+      align-self: center;
+      overflow: visible !important;
     }
 
     @include breakpoint(desktop-xl) {
       gap: 1.5rem;
     }
+
+    a,
+    button,
+    .btn {
+      white-space: nowrap !important;
+      overflow: hidden !important; // Quita la barra de scroll
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      height: auto !important;
+      line-height: normal !important;
+      box-sizing: border-box;
+    }
   }
 }
 
 .menu__toggle-checkbox:checked {
-  //Muestra el nav
   & ~ .main__nav {
     display: flex;
     flex-direction: column;
@@ -212,41 +238,42 @@
     }
   }
 
-  //Oculta el ícono de la hamburguesa
   & ~ .menu__toggle-label {
     .hamburger {
       display: none;
     }
-    //Muestra la x
     .close-icon {
       display: block;
     }
   }
 }
 
+// Submenús
 .has-submenu {
-  position: relative; // Para que el submenú se posicione respecto a esta palabra
+  position: relative;
   width: 100%;
 
   @include breakpoint(tablet) {
     width: auto;
   }
+
   > a {
-    cursor: default;
+    cursor: pointer;
     color: var(--color-brand-secondary);
     font-weight: bold;
     padding: 0.5rem 0;
-    white-space: nowrap; // Evita que los títulos largos se dividan en varias líneas
+    white-space: nowrap;
     display: block;
   }
 
-  // Al hacer hover en "Másters" o "Recursos", mostramos el submenú
-  &:hover .submenu,
-  &:focus .submenu {
-    @include breakpoint(tablet) {
+  // Activa el despliegue al pasar el cursor o hacer click
+  &:hover > .submenu,
+  &:focus-within > .submenu {
+    @include breakpoint(desktop) {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
     }
   }
 }
@@ -261,33 +288,26 @@
 
   @include breakpoint(desktop) {
     position: absolute;
-    top: 130%;
+    top: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%) translateY(8px);
     background-color: var(--color-bg-white);
-    min-width: 240px;
-    width: max-content; // El ancho se ajusta al contenido
-    border: 1px solid rgba(var(--color-brand-primary-rgb), 0.06);
+    min-width: 270px;
+    width: max-content;
+    border: 1px solid rgba(var(--color-brand-primary-rgb), 0.08);
     border-radius: 12px;
     padding: 1.25rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
 
-    // Oculto por defecto con transición suave
+    // Oculto por defecto en Desktop
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-  }
-
-  // Activación del comportamiento flotante SOLO en Desktop
-  .has-submenu:hover &,
-  .has-submenu:focus-within & {
-    @include breakpoint(desktop) {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0.2s ease;
   }
 
   li a {
@@ -310,12 +330,11 @@
     @include breakpoint(desktop) {
       color: var(--color-text-main);
       padding: 0.6rem 0.8rem;
-      border-radius: 6px;
     }
 
     &:hover,
     &:focus {
-      transform: translate(8px);
+      transform: translateX(4px);
       text-decoration: underline;
       text-decoration-thickness: 1px;
 
