@@ -1,0 +1,8 @@
+# Dependencias de Node
+node_modules/
+
+# Archivos de compilación de Vite
+dist/
+
+# Mapas de CSS (si se generan)
+*.css.map
