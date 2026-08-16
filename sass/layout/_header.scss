@@ -38,12 +38,8 @@
     width: 150px;
 
     @include breakpoint(tablet) {
-      width: 180px;
-      margin-right: auto;
-    }
-
-    @include breakpoint(tablet) {
       width: 250px;
+      margin-right: auto;
     }
 
     a {
