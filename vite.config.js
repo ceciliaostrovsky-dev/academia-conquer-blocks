@@ -25,42 +25,12 @@ function collectHtmlEntries(dir, entries = {}) {
   return entries;
 }
 
-function injectBaseTag(base) {
-  return {
-    name: 'inject-base-tag',
-    transformIndexHtml(html) {
-      if (html.includes('<base ')) return html;
-      return html.replace('<head>', `<head>\n    <base href="${base}">`);
+export default defineConfig({
+  base: './', // <- Esto hace que las rutas funcionen en cualquier hosting sin depender de subcarpetas
+  plugins: [injectHTML()],
+  build: {
+    rollupOptions: {
+      input: collectHtmlEntries(rootDir),
     },
-  };
-}
-
-function rewriteRootAbsoluteUrls(base) {
-  return {
-    name: 'rewrite-root-absolute-urls',
-    transformIndexHtml: {
-      order: 'post',
-      handler(html) {
-        if (base === '/') return html;
-
-        return html
-          .replace(/href="\/(?!\/)([^"#?]*?)"/g, (_, path) => `href="${base}${path}"`)
-          .replace(/src="\/(?!\/)([^"#?]*?)"/g, (_, path) => `src="${base}${path}"`);
-      },
-    },
-  };
-}
-
-export default defineConfig(({ command }) => {
-  const base = command === 'build' ? '/academia-conquer-blocks/' : '/';
-
-  return {
-    base,
-    plugins: [injectHTML(), injectBaseTag(base), rewriteRootAbsoluteUrls(base)],
-    build: {
-      rollupOptions: {
-        input: collectHtmlEntries(rootDir),
-      },
-    },
-  };
+  },
 });
