@@ -12,16 +12,16 @@
     <link rel="icon" href="favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="genfavicon-32.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-
-    <meta name="theme-color" content="#fafafa" />
-    <link rel="stylesheet" href="./sass/style.css" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="manifest" href="site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap"
       rel="stylesheet"
     />
+    <script type="module" src="/main.js"></script>
+
+    <meta name="theme-color" content="#fafafa" />
   </head>
 
   <body>
@@ -40,7 +40,7 @@
         </header>
 
         <!-- UN SOLO FORMULARIO QUE REDIRIGE A EXITO.HTML -->
-        <form action="exito.html" method="POST" class="register__form">
+        <form action="exito.html" method="GET" class="register__form">
           <!-- SECCIÓN 1: INFORMACIÓN PERSONAL -->
           <fieldset class="register__fieldset">
             <legend class="register__legend">Información Personal</legend>
